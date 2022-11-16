@@ -4,7 +4,7 @@ metadata:
   name: app-deployment
   namespace: mmowbray
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
         name: app-deployment
-        image: harbor.dev.afsmtddso.com/mmowbrayharborproject/app:971c881-1624dfd
+        image: harbor.dev.afsmtddso.com/mmowbrayharborproject/db@sha256:3ee098e0ae70841f67b9a0c7964e971d7273e92b541a4041e834c4a38424b891
         ports:
-        - containerPort: 5000
+        - containerPort: 5432
