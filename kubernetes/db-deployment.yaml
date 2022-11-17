@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: db-deployment
   namespace: mmowbray
   labels:
     app: db
@@ -22,7 +22,7 @@ spec:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
+        name: db-deployment
         image: harbor.dev.afsmtddso.com/mmowbrayharborproject/db@sha256:3ee098e0ae70841f67b9a0c7964e971d7273e92b541a4041e834c4a38424b891
         ports:
         - containerPort: 5432
